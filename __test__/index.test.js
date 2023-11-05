@@ -70,7 +70,7 @@ describe("POST /s1/exercice1", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrer un nombre valide" }]);
   });
 
-  test("Retourne une erreur si addition pas d'erreur", async () => {
+  test("Addition pas d'erreur", async () => {
     const res = await request(app)
       .post("/s1/exercice1")
       .send({ n1: -1, n2: 2 });
