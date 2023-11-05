@@ -32,7 +32,7 @@ describe("POST /:param", () => {
  * @desc Addition
  */
 describe("POST /s1/exercice1", () => {
-  test("Lettre présente", async () => {
+  test("Retourne une erreur si lettre présente", async () => {
     const res = await request(app)
       .post("/s1/exercice1")
       .send({ n1: 3, n2: "as" });
@@ -40,13 +40,13 @@ describe("POST /s1/exercice1", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrez des nombres" }]);
   });
 
-  test("valeur non def", async () => {
+  test("Retourne une erreur si valeur non def", async () => {
     const res = await request(app).post("/s1/exercice1").send({ n2: 2 });
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([{ reponse: "Les nombres ne sont pas définis" }]);
   });
 
-  test("n1 est null", async () => {
+  test("Retourne une erreur si n1 est null", async () => {
     const res = await request(app)
       .post("/s1/exercice1")
       .send({ n1: null, n2: 2 });
@@ -54,7 +54,7 @@ describe("POST /s1/exercice1", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrer un nombre valide" }]);
   });
 
-  test("n2 est null", async () => {
+  test("Retourne une erreur si n2 est null", async () => {
     const res = await request(app)
       .post("/s1/exercice1")
       .send({ n1: 1, n2: null });
@@ -62,7 +62,7 @@ describe("POST /s1/exercice1", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrer un nombre valide" }]);
   });
 
-  test("n1 et n2 sont null", async () => {
+  test("Retourne une erreur si n1 et n2 sont null", async () => {
     const res = await request(app)
       .post("/s1/exercice1")
       .send({ n1: null, n2: null });
@@ -70,7 +70,7 @@ describe("POST /s1/exercice1", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrer un nombre valide" }]);
   });
 
-  test("Addition pas d'erreur", async () => {
+  test("Retourne une erreur si addition pas d'erreur", async () => {
     const res = await request(app)
       .post("/s1/exercice1")
       .send({ n1: -1, n2: 2 });
@@ -84,7 +84,7 @@ describe("POST /s1/exercice1", () => {
  * @desc Soustraction
  */
 describe("POST /s1/exercice2", () => {
-  test("lettre présente", async () => {
+  test("Retourne une erreur si lettre présente", async () => {
     const res = await request(app)
       .post("/s1/exercice2")
       .send({ n1: 3, n2: "as" });
@@ -92,13 +92,13 @@ describe("POST /s1/exercice2", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrez des nombres" }]);
   });
 
-  test("valeur non def", async () => {
+  test("Retourne une erreur si valeur non def", async () => {
     const res = await request(app).post("/s1/exercice2").send({ n2: 2 });
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([{ reponse: "Les nombres ne sont pas définis" }]);
   });
 
-  test("n1 est null", async () => {
+  test("Retourne une erreur si n1 est null", async () => {
     const res = await request(app)
       .post("/s1/exercice2")
       .send({ n1: null, n2: 2 });
@@ -106,7 +106,7 @@ describe("POST /s1/exercice2", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrer un nombre valide" }]);
   });
 
-  test("n2 est null", async () => {
+  test("Retourne une erreur si n2 est null", async () => {
     const res = await request(app)
       .post("/s1/exercice2")
       .send({ n1: 1, n2: null });
@@ -114,7 +114,7 @@ describe("POST /s1/exercice2", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrer un nombre valide" }]);
   });
 
-  test("n1 et n2 sont null", async () => {
+  test("Retourne une erreur si n1 et n2 sont null", async () => {
     const res = await request(app)
       .post("/s1/exercice2")
       .send({ n1: null, n2: null });
@@ -276,7 +276,7 @@ describe("POST /s1/exercice5", () => {
  * @desc pair et impair
  */
 describe("POST /s1/exercice6", () => {
-  test("rRetourne une erreur si lettre présente", async () => {
+  test("Retourne une erreur si lettre présente", async () => {
     const res = await request(app).post("/s1/exercice6").send({ n1: "as" });
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([{ reponse: "Veuillez entrez des nombres" }]);
