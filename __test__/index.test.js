@@ -136,7 +136,7 @@ describe("POST /s1/exercice2", () => {
  * @desc Multiplication
  */
 describe("POST /s1/exercice3", () => {
-  test("Lettre présente", async () => {
+  test("Retourne une erreur si lettre présente", async () => {
     const res = await request(app)
       .post("/s1/exercice3")
       .send({ n1: 3, n2: "as" });
@@ -144,13 +144,13 @@ describe("POST /s1/exercice3", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrez des nombres" }]);
   });
 
-  test("valeur non def", async () => {
+  test("Retourne une erreur si valeur non def", async () => {
     const res = await request(app).post("/s1/exercice3").send({ n2: 2 });
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([{ reponse: "Les nombres ne sont pas définis" }]);
   });
 
-  test("n1 est null", async () => {
+  test("Retourne une erreur si n1 est null", async () => {
     const res = await request(app)
       .post("/s1/exercice3")
       .send({ n1: null, n2: 2 });
@@ -158,7 +158,7 @@ describe("POST /s1/exercice3", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrer un nombre valide" }]);
   });
 
-  test("n2 est null", async () => {
+  test("Retourne une erreur si n2 est null", async () => {
     const res = await request(app)
       .post("/s1/exercice3")
       .send({ n1: 1, n2: null });
@@ -166,7 +166,7 @@ describe("POST /s1/exercice3", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrer un nombre valide" }]);
   });
 
-  test("n1 et n2 sont null", async () => {
+  test("Retourne une erreur si n1 et n2 sont null", async () => {
     const res = await request(app)
       .post("/s1/exercice3")
       .send({ n1: null, n2: null });
@@ -188,19 +188,19 @@ describe("POST /s1/exercice3", () => {
  * @desc Division
  */
 describe("POST /s1/exercice4", () => {
-  test("Lettre présente", async () => {
+  test("Retourne une erreur si lettre présente", async () => {
     const res = await request(app).post("/s1/exercice4").send({n1: 3, n2: "as" });
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([{ reponse: "Veuillez entrez des nombres" }]);
   });
 
-  test("valeur non def", async () => {
+  test("Retourne une erreur si valeur non def", async () => {
     const res = await request(app).post("/s1/exercice4").send({ n2: 2 });
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([{ reponse: "Les nombres ne sont pas définis" }]);
   });
 
-  test("n1 est null", async () => {
+  test("Retourne une erreur si n1 est null", async () => {
     const res = await request(app)
       .post("/s1/exercice4")
       .send({ n1: null, n2: 2 });
@@ -208,7 +208,7 @@ describe("POST /s1/exercice4", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrer un nombre valide" }]);
   });
 
-  test("n2 est null", async () => {
+  test("Retourne une erreur si n2 est null", async () => {
     const res = await request(app)
       .post("/s1/exercice4")
       .send({ n1: 1, n2: null });
@@ -216,7 +216,7 @@ describe("POST /s1/exercice4", () => {
     expect(res.body).toEqual([{ reponse: "Veuillez entrer un nombre valide" }]);
   });
 
-  test("n1 et n2 sont null", async () => {
+  test("Retourne une erreur si n1 et n2 sont null", async () => {
     const res = await request(app)
       .post("/s1/exercice4")
       .send({ n1: null, n2: null });
@@ -238,25 +238,25 @@ describe("POST /s1/exercice4", () => {
  * @desc factorielle
  */
 describe("POST /s1/exercice5", () => {
-  test("retourne une erreur si lettre présente", async () => {
+  test("Retourne une erreur si lettre présente", async () => {
     const res = await request(app).post("/s1/exercice5").send({ n1: "as" });
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([{ reponse: "Veuillez entrez des nombres" }]);
   });
 
-  test("retourne une erreur si valeur non def", async () => {
+  test("Retourne une erreur si valeur non def", async () => {
     const res = await request(app).post("/s1/exercice5").send({});
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([{ reponse: "Le nombre n'est pas défini" }]);
   });
 
-  test("retourne une erreur si n1 est null", async () => {
+  test("Retourne une erreur si n1 est null", async () => {
     const res = await request(app).post("/s1/exercice5").send({ n1: null });
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([{ reponse: "Le nombre n'est pas défini" }]);
   });
 
-  test("retourne une erreur si chiffre négatif", async () => {
+  test("Retourne une erreur si chiffre négatif", async () => {
     const res = await request(app).post("/s1/exercice5").send({ n1: -5 });
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([
@@ -276,13 +276,13 @@ describe("POST /s1/exercice5", () => {
  * @desc pair et impair
  */
 describe("POST /s1/exercice6", () => {
-  test("retourne une erreur si lettre présente", async () => {
+  test("rRetourne une erreur si lettre présente", async () => {
     const res = await request(app).post("/s1/exercice6").send({ n1: "as" });
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([{ reponse: "Veuillez entrez des nombres" }]);
   });
 
-  test("retourne une erreur si valeur non def", async () => {
+  test("Retourne une erreur si valeur non def", async () => {
     const res = await request(app).post("/s1/exercice6").send({});
     expect(res.statusCode).toBe(400);
     expect(res.body).toEqual([{ reponse: "Le nombre n'est pas défini" }]);
